@@ -56,8 +56,12 @@ l = list(set(material)) # словарь
 for i in material:
     label.append(l.index(i)) # each stamps will equal its index in dict
 
-ds_train_x, ds_test_x = tf.split(pic_matrix, num_or_size_splits=2)
-ds_train_y, ds_test_y = tf.split(label, num_or_size_splits=2)
+x = int(round(len(label)*0.95))
+ds_train_x, ds_test_x = tf.split(pic_matrix, num_or_size_splits=[x, len(label)-x])
+ds_train_y, ds_test_y = tf.split(label, num_or_size_splits=[x, len(label)-x])
+
+# ds_train_x, ds_test_x = tf.split(pic_matrix, num_or_size_splits=2)
+# ds_train_y, ds_test_y = tf.split(label, num_or_size_splits=2)
 
 ds_train = tf.data.Dataset.from_tensor_slices((ds_train_x, ds_train_y))
 ds_test = tf.data.Dataset.from_tensor_slices((ds_test_x, ds_test_y))
