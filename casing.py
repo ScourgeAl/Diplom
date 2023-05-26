@@ -56,6 +56,9 @@ l = list(set(material)) # словарь
 for i in material:
     label.append(l.index(i)) # each casing will equal its index in dict
 
+print(l)
+print(set(label))
+
 # x = int(round(len(label)*0.95))
 # ds_train_x, ds_test_x = tf.split(pic_matrix, num_or_size_splits=[x, len(label)-x])
 # ds_train_y, ds_test_y = tf.split(label, num_or_size_splits=[x, len(label)-x])

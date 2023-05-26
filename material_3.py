@@ -15,6 +15,7 @@ EPOCHS = 30
 df = pd.read_csv("markdown_3.csv",
     names=["filename", "dates", "material_1", "material_2",
            "material_3", "technique", "stamps", "casing"], dtype={'casing': bool})
+df = df.replace(np.nan, None)
 
 filename = df['filename'].to_list() # make list of all file paths to images
 
@@ -55,6 +56,9 @@ l = list(set(material)) # словарь
 
 for i in material:
     label.append(l.index(i)) # each materials will equal its index in dict
+
+print(l)
+print(set(label))
 
 # x = int(round(len(label)*0.95))
 # ds_train_x, ds_test_x = tf.split(pic_matrix, num_or_size_splits=[x, len(label)-x])
